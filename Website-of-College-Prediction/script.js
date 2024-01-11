@@ -88,3 +88,13 @@ topCollegesBtn.addEventListener('click', function() {
   // Open the "IITs" page in the same window
   window.location.href = "iits.html";
 });
+
+// JavaScript function to show the "About Us" section
+function showAboutUs() {
+    document.getElementById('aboutUsModal').style.display = 'block';
+}
+
+// JavaScript function to close the modal
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+}
