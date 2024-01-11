@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Colleges in India</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2em;
+  margin: 0;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  display: inline-block;
+  padding: 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+main section {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+h2 {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+img {
+  width: 300px;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+p {
+  line-height: 1.5;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #eee;
+}
+
+/* Add more styles for specific elements and interactions */
+
+  </style>
+  <script>
+    // Add any interactive elements or animations here
+
+// For example, highlight navigation links on scroll
+window.onscroll = function() {
+  var currentLink = document.querySelector("nav a.active");
+  if (currentLink) {
+    currentLink.classList.remove("active");
+  }
+  var sectionTop = document.getElementById(document.documentElement.scrollTop + window.innerHeight / 2);
+  if (sectionTop) {
+    sectionTop.previousElementSibling.querySelector("a").classList.add("active");
+  }
+};
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Top Colleges in India</h1>
+    <nav>
+      <ul>
+        <li><a href="#iitb">IIT Bombay</a></li>
+        <li><a href="#iitd">IIT Delhi</a></li>
+        <li><a href="#iitm">IIT Madras</a></li>
+        <li><a href="#iitkgp">IIT Kharagpur</a></li>
+        </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="iitb">
+      <h2>IIT Bombay</h2>
+      <img src="iitb.jpg" alt="IIT Bombay campus">
+      <p>IIT Bombay, established in 1958, is one of the most prestigious educational institutions in India. It offers a wide range of undergraduate and postgraduate programs in engineering, science, and management...</p>
+      <a href="https://www.iitb.ac.in/" target="_blank">Visit IIT Bombay Website</a>
+    </section>
+    </main>
+  <footer>
+    <p>&copy; 2024 Top Colleges in India</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

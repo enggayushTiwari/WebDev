@@ -75,3 +75,16 @@ document.getElementById('registerForm').addEventListener('submit', function(e) {
 document.getElementById('homeBtn').addEventListener('click', function() {
     location.reload();
 });
+
+const getStartedBtn = document.getElementById('getStartedBtn');
+const topCollegesBtn = document.getElementById('topCollegesBtn');
+
+getStartedBtn.addEventListener('click', function() {
+  // Open the "IITs" page in the same window
+  window.location.href = "iits.html";
+});
+
+topCollegesBtn.addEventListener('click', function() {
+  // Open the "IITs" page in the same window
+  window.location.href = "iits.html";
+});
