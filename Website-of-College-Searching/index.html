@@ -189,7 +189,7 @@
         <div class="nav-links">
             <a href="#" id="homeBtn">Home</a>
             <a href="iits.html" id="topCollegesBtn">Top Colleges</a>
-            <a href="#">Predict Colleges</a>
+            <a href="#" onclick="showPredictColleges()">Predict Colleges</a>
             <a href="#" id="aboutUsBtn">About Us</a>
             <a href="#" id="contactUsBtn">Contact Us</a>
             <a href="#" id="loginBtn">Log In</a>
@@ -292,6 +292,18 @@
                 <p>Address: 123 Main Street, Cityville, State, Country</p>
             </div>
         </div>
+
+        <!-- Add a new modal for Predict Colleges -->
+        <div id="predictCollegesModal" class="modal">
+            <div class="modal-content">
+                <span class="close" onclick="closeModal('predictCollegesModal')">×</span>
+                <h2>Predict Colleges</h2>
+                <section id="predictColleges" class="main-content">
+                    <!-- Content will be loaded dynamically here -->
+                </section>
+            </div>
+        </div>
+
 
     </div>
 

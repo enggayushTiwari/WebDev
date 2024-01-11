@@ -98,3 +98,20 @@ function showAboutUs() {
 function closeModal(modalId) {
     document.getElementById(modalId).style.display = 'none';
 }
+
+function showPredictColleges() {
+    // Load predictColleges.html content into the aboutUs section
+    fetch('predictColleges.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('predictColleges').innerHTML = data;
+        });
+
+    // Show the modal
+    document.getElementById('predictCollegesModal').style.display = 'block';
+}
+
+// Add this script to your existing code
+function closeModal(modalId) {
+    document.getElementById(modalId).style.display = 'none';
+    }
