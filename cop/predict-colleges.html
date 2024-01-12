@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add your CSS style here */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+
+        .results {
+            width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+        }
+
+        .result {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .result img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-right: 20px;
+        }
+
+        .result h3 {
+            margin: 0;
+        }
+
+        .result p {
+            margin: 5px 0;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <h1>College Prediction Website</h1>
+    <form id="form">
+        <label for="grade">Your Grade (Percentage)</label>
+        <input type="number" id="grade" min="0" max="100" required>
+        <label for="test">Your Test Score (SAT or ACT)</label>
+        <input type="number" id="test" min="0" max="1600" required>
+        <label for="location">Your Preferred Location</label>
+        <select id="location" required>
+            <option value="">Select a location</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+            <option value="India">India</option>
+        </select>
+        <label for="budget">Your Budget (Per Year in USD)</label>
+        <input type="number" id="budget" min="0" required>
+        <button type="submit" id="submit">Predict Colleges</button>
+    </form>
+    <div class="results" id="results">
+        <!-- The results will be displayed here -->
+    </div>
+    <script>
+        // Add your JAVASCRIPT logic here
+        // Get the elements from the document
+        const form = document.getElementById("form");
+        const grade = document.getElementById("grade");
+        const test = document.getElementById("test");
+        const location = document.getElementById("location");
+        const budget = document.getElementById("budget");
+        const submit = document.getElementById("submit");
+        const results = document.getElementById("results");
+
+        // Define a function to get the college data from an API
+        // You can use any API or database that provides college information
+        // For this example, we will use a mock API from Mocky.io
+        // The API returns an array of objects, each object representing a college
+        // Each college object has the following properties:
+        // - name: the name of the college
+        // - image: the URL of the college logo
+        // - ranking: the ranking of the college in the world
+        // - admission: the admission rate of the college in percentage
+        // - tuition: the tuition fee of the college per year in USD
+        // - location: the location of the college
+        const getCollegeData = async () => {
+            // The URL of the mock API
+            const url = "https://run.mocky.io/v3/5f8c7a1e-0f0a-4b9c-8b2f-5f5c9a9f6d0a";
+            // Fetch the data from the API using the fetch method
+            const response = await fetch(url);
+            // Parse the data as JSON
+            const data = await response.json();
+            // Return the data
+            return data;
+        };
+
+        // Define a function to filter the college data based on the user's input
+        // The function takes the college data and the user's input as parameters
+        // The function returns an array of colleges that match the user's criteria
+        const filterCollegeData = (data, input) => {
+            // Get the user's input values
+            const userGrade = input.grade;
+            const userTest = input.test;
+            const userLocation = input.location;
+            const userBudget = input.budget;
+            // Define an empty array to store the filtered colleges
+            const filteredColleges = [];
+            // Loop through the college data
+            for (let college of data) {
+                // Get the college properties
+                const collegeGrade = college.admission;
+                const collegeTest = college.test;
+                const collegeLocation = college.location;
+                const collegeTuition = college.tuition;
+                // Define a boolean variable to store the match status
+                let isMatch = true;
+                // Check if the user's grade is greater than or equal to the college's admission rate
+                if (userGrade < collegeGrade) {
+                    // If not, set the match status to false
+                    isMatch = false;
+                }
+                // Check if the user's test score is greater than or equal to the college's test score
+                if (userTest < collegeTest) {
+                    // If not, set the match status to false
+                    isMatch = false;
+                }
+                // Check if the user's location is equal to the college's location
+                if (userLocation !== collegeLocation) {
+                    // If not, set the match status to false
+                    isMatch = false;
+                }
+                // Check if the user's budget is greater than or equal to the college's tuition fee
+                if (userBudget < collegeTuition) {
+                    // If not, set the match status to false
+                    isMatch = false;
+                }
+                // If the match status is true, push the college to the filtered array
+                if (isMatch) {
+                    filteredColleges.push(college);
+                }
+            }
+            // Return the filtered array
+            return filteredColleges;
+        };
+
+        // Define a function to display the results on the website
+        // The function takes the filtered college data as a parameter
+        // The function creates and appends HTML elements to the results div
+        const displayResults = (data) => {
+            // Clear the previous results
+            results.innerHTML = "";
+            // Check if the data array is empty
+            if (data.length === 0) {
+                // If yes, create and append a paragraph element with a message
+                const p = document.createElement("p");
+                p.textContent = "Sorry, no colleges match your criteria. Please try again with different input.";
+                results.appendChild(p);
+            } else {
+                // If not, loop through the data array
+                for (let college of data) {
+                    // Get the college properties
+                    const collegeName = college.name;
+                    const collegeImage = college.image;
+                    const collegeRanking = college.ranking;
+                    const collegeAdmission = college.admission;
+                    const collegeTuition = college.tuition;
+                    // Create and append a div element with the class result
+                    const result = document.createElement("div");
+                    result.className = "result";
+                    results.appendChild(result);
+                    // Create and append an image element with the
+                    // source attribute set to the college image URL
+                    const img = document.createElement("img");
+                    img.src = collegeImage;
+                    result.appendChild(img);
+                    // Create and append a div element with the class info
+                    const info = document.createElement("div");
+                    info.className = "info";
+                    result.appendChild(info);
+                    // Create and append a heading element with the college name
+                    const h3 = document.createElement("h3");
+                    h3.textContent = collegeName;
+                    info.appendChild(h3);
+                    // Create and append a paragraph element with the college ranking
+                    const p1 = document.createElement("p");
+                    p1.textContent = "World Ranking: " + collegeRanking;
+                    info.appendChild(p1);
+                    // Create and append a paragraph element with the college admission rate
+                    const p2 = document.createElement("p");
+                    p2.textContent = "Admission Rate: " + collegeAdmission + "%";
+                    info.appendChild(p2);
+                    // Create and append a paragraph element with the college tuition fee
+                    const p3 = document.createElement("p");
+                    p3.textContent = "Tuition Fee: $" + collegeTuition;
+                    info.appendChild(p3);
+                }
+            }
+        };
+
+        // Add an event listener to the submit button
+        // When the button is clicked, prevent the default behavior of the form
+        // Get the user's input values and store them in an object
+        // Call the getCollegeData function and store the result in a variable
+        // Call the filterCollegeData function with the college data and the user's input
+        // Call the displayResults function with the filtered college data
+        submit.addEventListener("click", async (event) => {
+            event.preventDefault();
+
+            const userInput = {
+                grade: parseFloat(grade.value),
+                test: parseFloat(test.value),
+                location: location.value,
+                budget: parseFloat(budget.value)
+            };
+
+            const collegeData = await getCollegeData();
+            const filteredColleges = filterCollegeData(collegeData, userInput);
+            displayResults(filteredColleges);
+        });
+    </script>
+</body>
+</html>
