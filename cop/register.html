@@ -114,20 +114,51 @@
     </div>
     <script>
         // You can add your JavaScript code here
-        // For example, you can add a function to validate the password and confirm password fields
-        function validatePassword() {
-            var password = document.getElementById("password");
-            var confirm_password = document.getElementById("confirm-password");
-            if (password.value != confirm_password.value) {
-                confirm_password.setCustomValidity("Passwords don't match");
-            } else {
-                confirm_password.setCustomValidity("");
-            }
-        }
+        // Get the form element by its id
+var registerForm = document.getElementById("registerForm");
 
-        // You can add an event listener to the form to call the validatePassword function on submit
-        var form = document.getElementById("register-form");
-        form.addEventListener("submit", validatePassword);
+// Add an event listener for the submit event
+registerForm.addEventListener("submit", function(event) {
+  // Prevent the default behavior of the form
+  event.preventDefault();
+
+  // Get the input values from the form
+  var username = registerForm.elements[0].value;
+  var email = registerForm.elements[1].value;
+  var password = registerForm.elements[2].value;
+  var confirmPassword = registerForm.elements[3].value;
+
+  // Validate the input values
+  if (username.length < 3) {
+    // Username must be at least 3 characters long
+    alert("Username must be at least 3 characters long.");
+    return;
+  }
+
+  if (!email.includes("@")) {
+    // Email must contain an @ symbol
+    alert("Email must be a valid email address.");
+    return;
+  }
+
+  if (password.length < 6) {
+    // Password must be at least 6 characters long
+    alert("Password must be at least 6 characters long.");
+    return;
+  }
+
+  if (password !== confirmPassword) {
+    // Password and confirm password must match
+    alert("Password and confirm password must match.");
+    return;
+  }
+
+  // If all validations pass, send the data to the server
+  // You can use AJAX, Fetch API, or any other method to do this
+  // For simplicity, we will just use an alert to simulate a successful registration
+  alert("Registration successful!");
+});
+
     </script>
 </body>
 </html>

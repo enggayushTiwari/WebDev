@@ -5,28 +5,33 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Login - Saarthi.com</title>
 <style>
-  body { font-family: Arial, sans-serif; background-color: #f7f7f7; }
-  .login-container { width: 300px; margin: 100px auto; padding: 20px; background: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
-  input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
-  .login-button { width: 100%; padding: 10px; background-color: #333; color: white; border: none; cursor: pointer; }
-  .login-button:hover { background-color: #05f034; }
+body { font-family: Arial, sans-serif; background-color: #f7f7f7; }
+.login-container { width: 300px; margin: 100px auto; padding: 20px; background: #fff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+input[type="text"], input[type="password"] { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; }
+.login-button { width: 100%; padding: 10px; background-color: #333; color: white; border: none; cursor: pointer; }
+.login-button:hover { background-color: #05f034; }
+.register-link { text-align: center; margin-top: 10px; }
 </style>
 </head>
 <body>
-  <div class="login-container">
-    <h2>Login to Saarthi</h2>
-    <form id="loginForm">
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit" class="login-button">Login</button>
-    </form>
-  </div>
-  <script>
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-      // Add your JavaScript code here to handle the login process.
-      alert('Login successful!');
-    });
-  </script>
+<div class="login-container">
+<h2>Login to Saarthi</h2>
+<form id="loginForm">
+<input type="text" placeholder="Username" required>
+<input type="password" placeholder="Password" required>
+<button type="submit" class="login-button">Login</button>
+</form>
+<div class="register-link">
+<a href="register.html">Don't have an account? Register first</a>
+</div>
+</div>
+<script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+event.preventDefault();
+
+// Add your login logic here (e.g., send data to a server)
+alert('Login successful!');
+});
+</script>
 </body>
 </html>
