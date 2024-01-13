@@ -113,52 +113,88 @@
         </div>
     </div>
     <script>
-        // You can add your JavaScript code here
-        // Get the form element by its id
-var registerForm = document.getElementById("registerForm");
+    // You can add your JavaScript code here for the above HTML code
+    // This is a function to validate the user input and show an error message if any field is invalid
+function validateForm() {
+    // Get the form element and the input elements
+    var form = document.getElementById("register-form");
+    var name = document.getElementById("name");
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    var confirmPassword = document.getElementById("confirm-password");
 
-// Add an event listener for the submit event
-registerForm.addEventListener("submit", function(event) {
-  // Prevent the default behavior of the form
-  event.preventDefault();
+    // Define some regular expressions to check the input format
+    var nameRegex = /^[a-zA-Z ]+$/; // Only letters and spaces are allowed
+    var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/; // A valid email address format
+    var passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*]).{8,}$/; // A strong password with at least 8 characters, one lowercase letter, one uppercase letter, one digit, and one special character
 
-  // Get the input values from the form
-  var username = registerForm.elements[0].value;
-  var email = registerForm.elements[1].value;
-  var password = registerForm.elements[2].value;
-  var confirmPassword = registerForm.elements[3].value;
+    // Define some variables to store the validation status and the error message
+    var isValid = true;
+    var errorMessage = "";
 
-  // Validate the input values
-  if (username.length < 3) {
-    // Username must be at least 3 characters long
-    alert("Username must be at least 3 characters long.");
-    return;
-  }
+    // Check each input field and update the validation status and the error message accordingly
+    if (name.value == "") {
+        // Name field is empty
+        isValid = false;
+        errorMessage += "Please enter your name.\n";
+    } else if (!nameRegex.test(name.value)) {
+        // Name field is not valid
+        isValid = false;
+        errorMessage += "Please enter a valid name.\n";
+    }
 
-  if (!email.includes("@")) {
-    // Email must contain an @ symbol
-    alert("Email must be a valid email address.");
-    return;
-  }
+    if (email.value == "") {
+        // Email field is empty
+        isValid = false;
+        errorMessage += "Please enter your email.\n";
+    } else if (!emailRegex.test(email.value)) {
+        // Email field is not valid
+        isValid = false;
+        errorMessage += "Please enter a valid email.\n";
+    }
 
-  if (password.length < 6) {
-    // Password must be at least 6 characters long
-    alert("Password must be at least 6 characters long.");
-    return;
-  }
+    if (password.value == "") {
+        // Password field is empty
+        isValid = false;
+        errorMessage += "Please enter your password.\n";
+    } else if (!passwordRegex.test(password.value)) {
+        // Password field is not strong enough
+        isValid = false;
+        errorMessage += "Please enter a strong password.\n";
+    }
 
-  if (password !== confirmPassword) {
-    // Password and confirm password must match
-    alert("Password and confirm password must match.");
-    return;
-  }
+    if (confirmPassword.value == "") {
+        // Confirm password field is empty
+        isValid = false;
+        errorMessage += "Please confirm your password.\n";
+    } else if (password.value != confirmPassword.value) {
+        // Password and confirm password fields do not match
+        isValid = false;
+        errorMessage += "Your passwords do not match.\n";
+    }
 
-  // If all validations pass, send the data to the server
-  // You can use AJAX, Fetch API, or any other method to do this
-  // For simplicity, we will just use an alert to simulate a successful registration
-  alert("Registration successful!");
+    // If the validation status is false, show an alert with the error message and prevent the form submission
+    if (!isValid) {
+        alert(errorMessage);
+        return false;
+    }
+
+    // If the validation status is true, return true and allow the form submission
+    return true;
+}
+
+// Add an event listener to the form submit button and call the validateForm function before submitting the form
+var submitButton = document.getElementById("submit-button");
+submitButton.addEventListener("click", function(event) {
+    // Prevent the default form submission behavior
+    event.preventDefault();
+    // Call the validateForm function and store the result
+    var result = validateForm();
+    // If the result is true, submit the form
+    if (result) {
+        form.submit();
+    }
 });
-
     </script>
 </body>
 </html>

@@ -1,179 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Find Your College</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Add your styles here */
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f0f0f0;
-    padding: 10px;
-  }
-  
-  #logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  #menu {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  #menu li {
-    display: inline-block;
-    margin-right: 20px; /* Adjust as needed */
-  }
-  
-  #menu li a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px;
-  }
-  
-  #menu li a:hover, #menu li a.active {
-    color: white;
-    background-color: #333;
-  }
-  
-  #auth {
-    display: flex;
-  }
-  
-  #auth button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 10px 15px;
-    margin-left: 10px;
-    color: white;
-    background-color: #333;
-  }
-  
-  #auth button:hover {
-    background-color: #555;
-  }
-  
-  #homepage-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #banner {
-    width: 80%;
-    margin: 20px auto;
-    text-align: center;
-  }
-  
-  #banner h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
-  }
-  
-  #banner h2 {
-    font-size: 32px;
-    margin-bottom: 20px;
-  }
-  
-  #actions {
-    display: flex;
-    justify-content: center;
-  }
-  
-  #actions button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 15px 25px;
-    margin: 10px;
-    font-size: 20px;
-    color: white;
-    background-color: #333;
-  }
-  
-  #actions button:hover {
-    background-color: #555;
-  }
-    </style>
-    <script>
-        // Add your JavaScript here
-document.addEventListener('DOMContentLoaded', function() {
-    // Your code goes here
-    // For example, you can add event listeners to the buttons
-    let login = document.getElementById('login');
-    let register = document.getElementById('register');
-    let getStarted = document.getElementById('get-started');
-    let learnMore = document.getElementById('learn-more');
- 
-    login.addEventListener('click', function() {
-       // Redirect to the login page or show a login modal
-       window.location.href = 'login.html';
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Find Your College</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Add your styles here */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f0f0f0;
+      padding: 10px;
+    }
+
+    #logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+    }
+
+    #menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #menu li {
+      display: inline-block;
+      margin-right: 20px;
+      /* Adjust as needed */
+    }
+
+    #menu li a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px;
+    }
+
+    #menu li a:hover,
+    #menu li a.active {
+      color: white;
+      background-color: #333;
+    }
+
+    #auth {
+      display: flex;
+    }
+
+    #auth button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 10px 15px;
+      margin-left: 10px;
+      color: white;
+      background-color: #333;
+    }
+
+    #auth button:hover {
+      background-color: #555;
+    }
+
+    #homepage-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #banner {
+      width: 80%;
+      margin: 20px auto;
+      text-align: center;
+    }
+
+    #banner h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    #banner h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    #actions {
+      display: flex;
+      justify-content: center;
+    }
+
+    #actions button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 20px;
+      color: white;
+      background-color: #333;
+    }
+
+    #actions button:hover {
+      background-color: #555;
+    }
+  </style>
+  <script>
+    // Add your JavaScript here
+    document.addEventListener('DOMContentLoaded', function () {
+      // Your code goes here
+      // For example, you can add event listeners to the buttons
+      let login = document.getElementById('login');
+      let register = document.getElementById('register');
+      let getStarted = document.getElementById('get-started');
+      let learnMore = document.getElementById('learn-more');
+
+      login.addEventListener('click', function () {
+        // Redirect to the login page or show a login modal
+        window.location.href = 'login.html';
+      });
+
+      register.addEventListener('click', function () {
+        // Redirect to the register page or show a register modal
+        window.location.href = 'register.html';
+      });
+
+      getStarted.addEventListener('click', function () {
+        // Redirect to the top colleges page or show a form to enter preferences
+        window.location.href = 'top-colleges.html';
+      });
+
+      learnMore.addEventListener('click', function () {
+        // Redirect to the about us page or show a section with more information
+        window.location.href = 'about-us.html';
+      });
     });
- 
-    register.addEventListener('click', function() {
-       // Redirect to the register page or show a register modal
-       window.location.href = 'register.html';
-    });
- 
-    getStarted.addEventListener('click', function() {
-       // Redirect to the top colleges page or show a form to enter preferences
-       window.location.href = 'top-colleges.html';
-    });
- 
-    learnMore.addEventListener('click', function() {
-       // Redirect to the about us page or show a section with more information
-       window.location.href = 'about-us.html';
-    });
- });
-    </script>
+  </script>
 </head>
+
 <body>
 
-<header>
+  <header>
     <div id="logo">Saarthi.com</div>
     <nav>
-        <ul id="menu">
-            <li><a href="#" class="active">Home</a></li>
-            <li><a href="top-colleges.html">Top Colleges</a></li>
-            <li><a href="predict-colleges.html">Predict Colleges</a></li>
-            <li><a href="about-us.html">About Us</a></li>
-            <li><a href="contact-us.html">Contact Us</a></li>
-        </ul>
+      <ul id="menu">
+        <li><a href="#" class="active">Home</a></li>
+        <li><a href="top-colleges.html">Top Colleges</a></li>
+        <li><a href="predict-colleges.html">Predict Colleges</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="contact-us.html">Contact Us</a></li>
+      </ul>
     </nav>
     <div id="auth">
-        <button id="login">Log In</button>
-        <button id="register">Register</button>
+      <button id="login">Log In</button>
+      <button id="register">Register</button>
     </div>
-</header>
+  </header>
 
-<main id="homepage-content">
-  <div id="banner">
+  <main id="homepage-content">
+    <div id="banner">
       <h1>Find Your College</h1>
       <h2>Guiding Students to Their Ideal College</h2>
       <div id="actions">
-          <button id="get-started">Get Started</button>
-          <button id="learn-more">Learn More</button>
+        <button id="get-started">Get Started</button>
+        <button id="learn-more">Learn More</button>
       </div>
-  </div>
-  <!-- You can add more sections as per your requirements -->
-</main>
+    </div>
+    <!-- You can add more sections as per your requirements -->
+  </main>
 
-<footer></footer>
+  <footer></footer>
 
-<script src="script.js"></script> 
+  <script src="script.js"></script>
 </body>
+
 </html>
